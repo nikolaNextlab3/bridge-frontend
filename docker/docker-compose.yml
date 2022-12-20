@@ -10,7 +10,7 @@ services:
       - 8081:4000
     networks:
       test-network:
-        ipv4_address: 192.168.10.6
+        ipv4_address: 172.104.226.247
     volumes:
       - ../:/var/www/bridge
     command: bash -c "cd /var/www/bridge && npm i && node index.js"
@@ -30,7 +30,7 @@ services:
       - ./caddy/caddy_config:/config
     networks:
       - slg-network:
-          ipv4_address: 192.168.10.7
+          ipv4_address: 172.104.226.248
 
 #---------------------------------------------------
 
@@ -40,5 +40,5 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 192.168.10.0/24 
-          gateway: 192.168.10.1
+        - subnet: 172.104.226.0/24 
+          gateway: 172.104.226.1

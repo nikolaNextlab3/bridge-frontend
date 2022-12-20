@@ -18,42 +18,7 @@ jobs:
         working-directory: .
         run: |
           ls
-          cp -R docker backend
-          cd frontend 
           npm install
           CI= npm run build
           ls
           mv build ../backend/ 
-          
-          
-      
-      - name: Application folder to remote
-        uses: garygrossgarten/github-action-scp@release
-        with: 
-          local: backend
-          remote: Application
-          host: ${{ secrets.VPS_HOST }}
-          port: ${{ secrets.VPS_PORT}}
-          username: ${{ secrets.VPS_USER }} 
-          privateKey: ${{ secrets.VPS_PRIVATEKEY }}
-      
-      - name: Restart services
-        uses: appleboy/ssh-action@master 
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          port: ${{ secrets.VPS_PORT}}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_PRIVATEKEY }}
-          script: |
-            ls -a
-            service docker restart
-            docker network rm example_slg-network
-            docker stop bridge-frontend
-            docker stop slg-caddy
-            cd Application/docker
-            ls -a            
-            docker rm bridge-frontend
-            docker rm slg-caddy
-            docker-compose up -d
-         
-            
