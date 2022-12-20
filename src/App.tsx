@@ -4,12 +4,15 @@ import Converter from './components/converter/converter';
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
 
-class App extends Component {
-  render() {
+const App = () => {
+  {
+
+    const [metamask, setMetamask] = React.useState(null);
+
     return (
       <div className="app">
-        <Header />
-        <Converter />
+        <Header setMetamask={setMetamask}/>
+        <Converter metamask={metamask}/>
         <Footer />
       </div>
     )

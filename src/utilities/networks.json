@@ -1,0 +1,35 @@
+{
+    "fuji": {
+        "symbol": "fuji",
+        "url": "https://api.avax-test.network/ext/bc/C/rpc", 
+        "id": "43113",
+        "bridge": "0xDECe45A29e4dF0e96DA1ef2F012ee9Be1af5d226",
+        "bridgeID": "0",
+        "resourceID": "0x000000000000000000000021605f71845f372A9ed84253d2D024B7B10999f500",
+        "decimals": "18",
+        "gasPrice": "25000000000",
+        "gasLimit": "8000000"
+    },
+    "tbnb": {
+        "symbol": "tbnb",
+        "url": "https://bsc-testnet.public.blastapi.io", 
+        "id": "97",
+        "bridge": "0xC611971446E882AA111F90F79c8bF5F4eF296762",
+        "bridgeID": "1",
+        "resourceID": "0x000000000000000000000021605f71845f372A9ed84253d2D024B7B10999f600",
+        "decimals": "18",
+        "gasPrice": "25000000000",
+        "gasLimit": "8000000"
+    },
+    "jgld": {
+        "symbol": "jgld",
+        "url": "https://api2.mcnpoc3.xyz:9650/ext/bc/GOLD/rpc", 
+        "id": "330007",
+        "bridge": "0x5d13cB0a2ab5e29F7955E84806F862c8D891ee82",
+        "bridgeID": "2",
+        "resourceID": "0x000000000000000000000021605f71845f372A9ed84253d2D024B7B10999f700",
+        "decimals": "18",
+        "gasPrice": "25000000000",
+        "gasLimit": "8000000"
+    }
+}

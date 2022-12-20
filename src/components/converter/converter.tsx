@@ -1,34 +1,72 @@
-import { useState } from 'react';
 import './converter.scss';
+import deposit from '../../utilities/deposit';
 
-import MetaMaskSDK from '@metamask/sdk';
-import detectEthereumProvider from '@metamask/detect-provider';
+const Converter = ({metamask}: any) => {
 
-const metamask = new MetaMaskSDK();
-//const provider = await detectEthereumProvider();
+  const transferTokens = () => {
+    const fromChain: string = (document.getElementById("fromChain") as HTMLSelectElement).value;
+    const toChain: string = (document.getElementById("toChain") as HTMLSelectElement).value;
+    const tokenType: string = (document.getElementById("tokenType") as HTMLSelectElement).value;
+    const amount: string = (document.getElementById("amount") as HTMLInputElement).value;
 
-const Converter = () => {
+    if(!metamask) {
+      alert('You must connect to your metamask wallet in order to proceed!');
+      return;
+    }
 
-  const[fromValue, setFromValue] = useState('0.0');
+    if(fromChain === toChain){
+      alert('Please select a different from or to chain in order to perform a transfer!');
+      return;
+    }
 
-  const getNetworkInfo = async () => {
-    console.log();
-  };
+    if(tokenType.slice(1) === fromChain) {
+      alert('You can not send this type of token from the "from" chain!');
+      return;
+    }
+
+    if(!amount || Number.isNaN(Number(amount)) || Number(amount) < 0) {
+      alert('You must enter a positive number in order to proceed!');
+      return;
+    }
+
+    deposit(metamask, fromChain, toChain, tokenType, Number(amount));
+
+  }
 
   return(
   <div className="converter">
-    <div className="fromTable">
-      <div className="firstPart">
-        <p>From</p>
-        <input type="text" placeholder='0.0'/>
+    <div className="inputFields">
+      <div className="fromChain">
+        <h1>From</h1>
+        <select name="fromChain" id="fromChain">
+          <option value="fuji">Fuji</option>
+          <option value="tbnb">BNB Testnet</option>
+          <option value="jgld">Juneo Gold Chain</option>
+        </select>
       </div>
-      <div className="secondPart">
-        <button onClick={getNetworkInfo}>Click me!</button>
+      <div className="toChain">
+        <h1>To</h1>
+        <select name="toChain" id="toChain">
+          <option value="fuji">Fuji</option>
+          <option value="tbnb">BNB Testnet</option>
+          <option value="jgld">Juneo Gold Chain</option>
+        </select>
+      </div>
+      <div className="tokenType">
+        <h1>Token</h1>
+        <select name="tokenType" id="tokenType">
+          <option value="native">Native</option>
+          <option value="wfuji">Wrapped FE20</option>
+          <option value="wtbnb">Wrapped BE20</option>
+          <option value="wjgld">Wrapped JE20</option>
+        </select>
+      </div>
+      <div className="amount">
+        <h1>Amount</h1>
+        <input id="amount" type="text" placeholder="0.0"></input>
       </div>
     </div>
-    <div className="toTable">
-
-    </div>
+    <button className="transferBtn" onClick={transferTokens}>Transfer</button>
   </div>
   );
   

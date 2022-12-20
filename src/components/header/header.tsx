@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import './header.scss';
 
+import detectEthereumProvider from '@metamask/detect-provider';
 const logo = require('../../assets/images/mcn.png');
 
 const metamask = window.ethereum;
 
-const Header = () => {
+const Header = ({setMetamask}: any) => {
 
   const[address, setAddress] = useState("Connect to a wallet");
   
@@ -13,6 +14,7 @@ const Header = () => {
     if(metamask && metamask.isMetaMask) {
       const accounts = await getAccounts();
       setAddress(formatAddress(accounts[0]));
+      setMetamask(metamask);
     }else {
       alert('In order to use this bridge you need to install Metamask on your browser!');
     }
@@ -31,9 +33,13 @@ const Header = () => {
   }
 
   metamask.on('accountsChanged', () => {
-    if(address != "Connect to a wallet") {
+    if(address !== "Connect to a wallet") {
       connectWalletHandler();
     }
+  })
+
+  metamask.on('chainChanged', (chainID: any) => {
+    window.location.reload();
   })
 
   return (
