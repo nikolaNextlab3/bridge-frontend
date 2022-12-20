@@ -1,0 +1,7 @@
+{
+  email nikola.nextlab3@gmail.com
+}
+
+www.mcnpoc2.xyz {
+  reverse_proxy 192.168.10.6:6000
+}

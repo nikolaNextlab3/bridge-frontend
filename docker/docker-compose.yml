@@ -1,0 +1,44 @@
+version: '2'
+
+services:
+
+  bridge-frontend:
+    image: node:16.15.0
+    container_name: bridge-frontend
+    restart: unless-stopped
+    ports:
+      - 8081:4000
+    networks:
+      test-network:
+        ipv4_address: 192.168.10.6
+    volumes:
+      - ../:/var/www/bridge
+    command: bash -c "cd /var/www/bridge && npm i && node index.js"
+
+  caddy:
+    depends_on:
+      - bridge-frontend
+    image: caddy:2.3.0
+    container_name: slg-caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy/caddy_data:/data
+      - ./caddy/caddy_config:/config
+    networks:
+      - slg-network:
+          ipv4_address: 192.168.10.7
+
+#---------------------------------------------------
+
+networks:
+
+  slg-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.10.0/24 
+          gateway: 192.168.10.1
