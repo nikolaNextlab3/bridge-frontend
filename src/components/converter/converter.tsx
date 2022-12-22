@@ -2,8 +2,10 @@ import './converter.scss';
 import deposit from '../../utilities/deposit';
 import Registry from '../registry/registry';
 
+import networks from '../../assets/data/networks.json';
+
 const Converter = ({metamask}: any) => {
-  
+
   const transferTokens = () => {
     const fromChain: string = (document.getElementById("fromChain") as HTMLSelectElement).value;
     const toChain: string = (document.getElementById("toChain") as HTMLSelectElement).value;
@@ -34,12 +36,30 @@ const Converter = ({metamask}: any) => {
 
   }
 
+  const changeChain = async () => {
+    const chain: string = (document.getElementById("fromChain") as HTMLSelectElement).value;
+    const network = Object.values(networks)[Object.keys(networks).indexOf(chain)];
+
+    // Change network
+    try {
+      await metamask.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{
+          chainId: `0x${(Number(network.id)).toString(16)}`
+        }]
+      });
+    } catch (switchError) {
+      alert('You must first add this chain to your metamask!');
+      return;
+    }
+  }
+
   return(
   <div className="converter">
     <div className="inputFields">
       <div className="fromChain">
         <h1>From</h1>
-        <select name="fromChain" id="fromChain">
+        <select name="fromChain" id="fromChain" onChange={changeChain}>
           <option value="fuji">Fuji</option>
           <option value="tbnb">BNB Testnet</option>
           <option value="jgld">Juneo Gold Chain</option>

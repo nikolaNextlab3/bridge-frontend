@@ -37,10 +37,6 @@ const Header = ({setMetamask}: any) => {
     }
   })
 
-  metamask.on('chainChanged', (chainID: any) => {
-    window.location.reload();
-  })
-
   return (
     <div className="header">
       <div className="logo">

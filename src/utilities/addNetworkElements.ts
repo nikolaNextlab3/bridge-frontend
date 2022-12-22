@@ -28,7 +28,7 @@ const addNetworkElements = async (metamask: any, network: string) => {
     const tokens = selectedNetwork.tokens;
     
     for(let i = 0; i < tokens.length; i++) {
-        await metamask.request({
+        const added_1 = await metamask.request({
             method: 'wallet_watchAsset',
             params: {
                 type: 'ERC20',
