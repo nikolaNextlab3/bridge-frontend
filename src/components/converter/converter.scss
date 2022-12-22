@@ -58,6 +58,10 @@
 
                 text-align: center;
             }
+
+            select:hover {
+                cursor: pointer;
+            }
         }
 
         .toChain {
@@ -83,6 +87,10 @@
 
                 text-align: center;
             }
+
+            select:hover {
+                cursor: pointer;
+            }
         }
 
         .tokenType {
@@ -107,6 +115,10 @@
                 font-size: 14px;
 
                 text-align: center;
+            }
+
+            select:hover {
+                cursor: pointer;
             }
         }
 
@@ -158,5 +170,10 @@
         letter-spacing: 1px;
         text-align: center;
         color: #FFFFFF;
+    }
+
+    .transferBtn:hover {
+        cursor: pointer;
+        filter: brightness(0.93);
     }
 }

@@ -10,6 +10,9 @@
 
 # production
 /build
+Dockerfile
+.dockerignore
+bridger.mcnpoc2.xyz.conf
 
 # misc
 .DS_Store

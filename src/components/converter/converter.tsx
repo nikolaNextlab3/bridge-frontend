@@ -1,8 +1,9 @@
 import './converter.scss';
 import deposit from '../../utilities/deposit';
+import Registry from '../registry/registry';
 
 const Converter = ({metamask}: any) => {
-
+  
   const transferTokens = () => {
     const fromChain: string = (document.getElementById("fromChain") as HTMLSelectElement).value;
     const toChain: string = (document.getElementById("toChain") as HTMLSelectElement).value;
@@ -67,6 +68,7 @@ const Converter = ({metamask}: any) => {
       </div>
     </div>
     <button className="transferBtn" onClick={transferTokens}>Transfer</button>
+    <Registry metamask={metamask}/>
   </div>
   );
   

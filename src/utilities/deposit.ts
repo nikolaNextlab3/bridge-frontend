@@ -1,7 +1,7 @@
 import { Contract, ethers } from "ethers";
 
 import bridgeContract from "../assets/contracts/Bridge.json";
-import networks from '../utilities/networks.json'; 
+import networks from '../assets/data/networks.json'; 
 
 const formatAmount = (amount: number, decimals: number) => {
     const withDecimals: number = amount*(10**Number(decimals));
@@ -33,14 +33,15 @@ const deposit = async (metamask: any, fromChain: string, toChain: string, token:
 
     const fromNetwork = Object.values(networks)[Object.keys(networks).indexOf(fromChain)];
     const toNetwork = Object.values(networks)[Object.keys(networks).indexOf(toChain)];
+    
     const fromNetworkProvider = new ethers.providers.JsonRpcProvider(fromNetwork.url);
 
     let selectedTokenResourceID = '';
 
     if(token[0] === 'w') {
-        selectedTokenResourceID = Object.values(networks)[Object.keys(networks).indexOf(token.slice(1))].resourceID
+        selectedTokenResourceID = Object.values(networks)[Object.keys(networks).indexOf(token.slice(1))].tokens[0].resource_ID
     }else {
-        selectedTokenResourceID = fromNetwork.resourceID;
+        selectedTokenResourceID = fromNetwork.tokens[0].resource_ID;
     }
 
     if(fromNetwork.id !== chainID) {
@@ -51,7 +52,7 @@ const deposit = async (metamask: any, fromChain: string, toChain: string, token:
     const bridge: Contract = new ethers.Contract(fromNetwork.bridge, bridgeContract.abi, signer);
     bridge.connect(fromNetworkProvider);
 
-    const formatedAmount = formatAmount(amount, Number(fromNetwork.decimals));
+    const formatedAmount = formatAmount(amount, Number(fromNetwork.tokens[0].decimals));
     const formatedAddress = formatAddress(currentAddress);
     const shortenedAddress = currentAddress.slice(2);
     

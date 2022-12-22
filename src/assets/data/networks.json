@@ -1,0 +1,116 @@
+{
+    "fuji": {
+        "symbol": "fuji",
+        "name": "Fuji Testnet",
+        "url": "https://api.avax-test.network/ext/bc/C/rpc", 
+        "id": "43113",
+        "bridge": "0xDECe45A29e4dF0e96DA1ef2F012ee9Be1af5d226",
+        "bridgeID": "0",
+        "currency": {
+            "name": "AVAX",
+            "symbol": "AVAX",
+            "decimals": "18"
+        },
+        "tokens": [
+            {
+                "name": "Fuji Native ERC20",
+                "symbol": "FE20",
+                "address": "0xcBF8ce7f085475e44C9305D254DCfB2Fa5CC5EEF",
+                "resource_ID": "0x000000000000000000000021605f71845f372A9ed84253d2D024B7B10999f500",
+                "decimals": "18"
+            },
+            {
+                "name": "Wrapped tBNB Native ERC20",
+                "symbol": "wBE20",
+                "address": "0xaf6a3e1dc1737B53195251898b004f1eF1A19d7d",
+                "resource_ID": "0x000000000000000000000021605f71845f372A9ed84253d2D024B7B10999f600",
+                "decimals": "18"
+            },
+            {
+                "name": "Wrapped Juneo Gold Chain Native ERC20",
+                "symbol": "wJE20",
+                "address": "0xC282B001658848eB8f747ce79B6B22F44CcE3f1e",
+                "resource_ID": "0x000000000000000000000021605f71845f372A9ed84253d2D024B7B10999f700",
+                "decimals": "18"
+            }
+        ],
+        "gasPrice": "25000000000",
+        "gasLimit": "8000000"
+    },
+    "tbnb": {
+        "symbol": "tbnb",
+        "name": "BNB Testnet",
+        "url": "https://bsc-testnet.public.blastapi.io", 
+        "id": "97",
+        "bridge": "0xC611971446E882AA111F90F79c8bF5F4eF296762",
+        "bridgeID": "1",
+        "currency": {
+            "name": "tBNB",
+            "symbol": "tBNB",
+            "decimals": "18"
+        },
+        "tokens": [
+            {
+                "name": "tBNB Native ERC20",
+                "symbol": "BE20",
+                "address": "0x1234868e4ab5beE4a056E6279238c0EA1b830A41",
+                "resource_ID": "0x000000000000000000000021605f71845f372A9ed84253d2D024B7B10999f600",
+                "decimals": "18"
+            },
+            {
+                "name": "Wrapped Fuji Native ERC20",
+                "symbol": "wFE20",
+                "address": "0x2061eF7e0239C1bD253232d90464fb1472077232",
+                "resource_ID": "0x000000000000000000000021605f71845f372A9ed84253d2D024B7B10999f500",
+                "decimals": "18"
+            },
+            {
+                "name": "Wrapped Juneo Gold Chain Native ERC20",
+                "symbol": "wJE20",
+                "address": "0xbBAe880d2Aa819107eDD1686F1EEcB73E4d455c6",
+                "resource_ID": "0x000000000000000000000021605f71845f372A9ed84253d2D024B7B10999f700",
+                "decimals": "18"
+            }
+        ],
+        "gasPrice": "25000000000",
+        "gasLimit": "8000000"
+    },
+    "jgld": {
+        "symbol": "jgld",
+        "name": "Juneo - Gold Chain",
+        "url": "https://api2.mcnpoc3.xyz:9650/ext/bc/GOLD/rpc", 
+        "id": "330007",
+        "bridge": "0x5d13cB0a2ab5e29F7955E84806F862c8D891ee82",
+        "bridgeID": "2",
+        "currency": {
+            "name": "GLD1",
+            "symbol": "GLD1",
+            "decimals": "18"
+        },
+        "tokens": [
+            {
+                "name": "June Gold Chain Native ERC20",
+                "symbol": "JE20",
+                "address": "0x2878ae8c1d1d95B56c3C9A0f7769d6C03022dD39",
+                "resource_ID": "0x000000000000000000000021605f71845f372A9ed84253d2D024B7B10999f700",
+                "decimals": "18"
+            },
+            {
+                "name": "Wrapped Fuji Native ERC20",
+                "symbol": "wFE20",
+                "address": "0xCab46BBE0152025bc6480ee5679BFD677e0BdD3a",
+                "resource_ID": "0x000000000000000000000021605f71845f372A9ed84253d2D024B7B10999f500",
+                "decimals": "18"
+            },
+            {
+                "name": "Wrapped tBNB Native ERC20",
+                "symbol": "wBE20",
+                "address": "0x1f2B402323b58165Db9022E53B7E25c9c9045824",
+                "resource_ID": "0x000000000000000000000021605f71845f372A9ed84253d2D024B7B10999f600",
+                "decimals": "18"
+            }
+        ],
+        "gasPrice": "25000000000",
+        "gasLimit": "8000000"
+    }
+}

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.scss';
 import Converter from './components/converter/converter';
 import Footer from './components/footer/footer';

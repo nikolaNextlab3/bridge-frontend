@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './header.scss';
 
-import detectEthereumProvider from '@metamask/detect-provider';
 const logo = require('../../assets/images/mcn.png');
 
 const metamask = window.ethereum;
