@@ -11,6 +11,18 @@
 
     .inputFields {
 
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        
+        background: #FFFFFF;
+        border: 0.5px solid rgba(125, 158, 255, 0.5);
+        box-shadow: 0px 5.41162px 21.6465px rgba(103, 124, 185, 0.15);
+        border-radius: 21.6465px;
+
+        margin-bottom: 40px;
+
         h1 {
             margin: 0;
             font-family: 'Roboto';
@@ -22,19 +34,6 @@
             margin-top: 10px;
             margin-bottom: 5px;
         }
-
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        
-        background: #FFFFFF;
-        border: 0.5px solid rgba(125, 158, 255, 0.5);
-        box-shadow: 0px 5.41162px 21.6465px rgba(103, 124, 185, 0.15);
-        border-radius: 21.6465px;
-
-        margin-bottom: 30px;
-
         .fromChain {
             display: flex;
             flex-direction: column;

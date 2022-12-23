@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import Converter from './components/converter/converter';
 import Footer from './components/footer/footer';
@@ -7,7 +7,7 @@ import Header from './components/header/header';
 const App = () => {
   {
 
-    const [metamask, setMetamask] = React.useState(null);
+    const [metamask, setMetamask] = useState(null);
 
     return (
       <div className="app">

@@ -1,7 +1,7 @@
 import networks from '../assets/data/networks.json';
 
-const addNetworkElements = async (metamask: any, network: string) => {
-
+const addTokens = async (metamask: any, network: string) => {
+    
     if(!metamask) {
         alert('You must connect to your metamask wallet in order to proceed!');
         return;
@@ -9,26 +9,21 @@ const addNetworkElements = async (metamask: any, network: string) => {
 
     const selectedNetwork = Object.values(networks)[Object.keys(networks).indexOf(network)];
 
-    // Add network
-    await metamask.request({
-        method: 'wallet_addEthereumChain',
-        params: [{
-            chainId: `0x${(Number(selectedNetwork.id)).toString(16)}`,
-            chainName: selectedNetwork.name,
-            nativeCurrency: {
-                name: selectedNetwork.currency.name,
-                symbol: selectedNetwork.currency.symbol,
-                decimals: Number(selectedNetwork.currency.decimals),
-            },
-                rpcUrls: [selectedNetwork.url]
-        }]
+    // Check if current network is selected tokens network
+    const chainID = await metamask.request({
+        method: 'net_version'
     });
+    
+    if(selectedNetwork.id !== chainID) {
+        alert('Please change the selected network on your metamask in order to proceed!');
+        return;
+    } 
 
     // Add tokens
     const tokens = selectedNetwork.tokens;
     
     for(let i = 0; i < tokens.length; i++) {
-        const added_1 = await metamask.request({
+        await metamask.request({
             method: 'wallet_watchAsset',
             params: {
                 type: 'ERC20',
@@ -42,4 +37,4 @@ const addNetworkElements = async (metamask: any, network: string) => {
     }
 }
 
-export default addNetworkElements;
+export default addTokens;
